@@ -6,4 +6,11 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'This is the Home Page' });
 });
 
+// Contact page
+router.get('/contact', function(req, res, next) {
+    res.render('contact', { title: 'This is the Contact Page' });
+});
+
+
+
 module.exports = router;
