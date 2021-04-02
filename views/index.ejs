@@ -33,57 +33,63 @@
                         <a class="nav-link" aria-current="page" href="/contact">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Login</a>
+                        <a class="nav-link" aria-current="page" href="/">Login/Register</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container">
-        <h1 id="welcomeMessageh1">Welcome to Angel's Investments</h1>
-        <br>
-        <div class="row">
-            <div class="offset-md-4 col-md-4">
-                <h1>Please Login</h1>
-                <form method="POST" autocomplete="off">
-                    <fieldset class="form-group">
-                        <label for="username">Username: </label>
-                        <input type="text" class="form-control" name="username" placeholder="Enter username" id="username" required autofocus>
-                    </fieldset>
+    <main class="bodyStyle">
+        <div>
+            <div class="welcomeMessageh1">
+                <h1>Welcome to Angel's Investments</h1>
+                <hr>
+                <h5>Links to Other Pages on Website</h5>
+                <p>
+                    <a href="/investors"><img src="/images/investorListing.png" alt=""></a>
+                    <a href="/businesses"><img src="/images/businessesListing.png" alt=""></a>
+                    <a href="/contact"><img src="/images/contact.png" alt=""></a>
+                </p>
+            </div>
+            <div class="row">
+                <div class="offset-md-4 col-md-4">
+                    <h1>Please Login</h1>
+                    <form method="POST" autocomplete="off">
+                        <fieldset class="form-group">
+                            <label for="username">Username: </label>
+                            <input type="text" class="form-control" name="username" placeholder="Enter username" id="username" required autofocus>
+                        </fieldset>
 
-                    <fieldset class="form-group">
-                        <label for="password">Password: </label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" required>
-                    </fieldset>
+                        <fieldset class="form-group">
+                            <label for="password">Password: </label>
+                            <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" required>
+                        </fieldset>
 
-                    <fieldset class="form-group">
-                        <br>
-                        <input type="submit" class="btn btn-success" value="Login">
-                        <a href="/">
-                            <input type="button" class="btn btn-warning" value="Cancel">
-                        </a>
-                        <hr>
-                        <div>
+                        <fieldset class="form-group">
                             <br>
-                            <h3>Dont Have an account yet?</h3>
-                            <a href="businesses/busregister">Click here to register as a Business</a>
-                            <br>
-                            <a href="investors/invregister">Click here to register as an Investor</a>
-                            <br>
-
-                        </div>
-
-                    </fieldset>
-
-                </form>
+                            <input type="submit" class="btn btn-success" value="Login">
+                            <a href="/">
+                                <input type="button" class="btn btn-warning" value="Cancel">
+                            </a>
+                            <hr>
+                            <div>
+                                <h3 class="center welcomeMessageh1">Dont Have an account yet?</h3>
+                                <p class="center">
+                                    <a href="businesses/busregister"><img src="/images/businessesReg.png" alt=""></a>
+                                    <a href="investors/invregister"><img src="/images/investorReg.png" alt=""></a>
+                                </p>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <br><br><br>
+        <br>
+    </main>
     <!-- Bottom Nav -->
     <footer>
         <nav class="navbar fixed-bottom navbar-dark bg-dark">
-            <h6 class="display-6 navbar-text">&copy; Copyright 2021. All Rights reserved.</h6>
+            <h6 class="navbar-text">&copy; Copyright 2021. All Rights reserved.</h6>
         </nav>
     </footer>
 

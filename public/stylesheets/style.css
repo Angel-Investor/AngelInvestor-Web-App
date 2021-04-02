@@ -10,6 +10,14 @@ a {
 .welcomeMessageh1 {
     text-align: center;
     border: black solid 2px;
-    background-color: lightgray;
+    background-color: lightskyblue;
     margin-top: 5px;
+}
+
+.center {
+    text-align: center;
+}
+
+.bodyStyle {
+    background-color: lavender;
 }
