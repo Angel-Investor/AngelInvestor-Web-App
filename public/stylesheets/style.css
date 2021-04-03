@@ -9,8 +9,7 @@ a {
 
 .welcomeMessageh1 {
     text-align: center;
-    border: black solid 2px;
-    background-color: lightskyblue;
+    background-color: lightgray;
     margin-top: 5px;
 }
 

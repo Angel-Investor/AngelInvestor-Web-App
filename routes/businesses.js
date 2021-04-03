@@ -3,11 +3,11 @@ let router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render("businesses", { title: "This is Businesses page" });
+    res.render("businesses", { title: "Business Listing" });
 });
 
 router.get('/busregister', function(req, res, next) {
-    res.render("businessRegister", { title: "This is Businesses registraion page" });
+    res.render("businessRegister", { title: "Business Registraion" });
 });
 
 module.exports = router;
