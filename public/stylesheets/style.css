@@ -1,6 +1,7 @@
 body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: rgb(208, 224, 247) !important;
 }
 
 a {
@@ -10,6 +11,7 @@ a {
 .welcomeMessageh1 {
     text-align: center;
     background-color: lavender;
+    /* background-color: rgb(208, 224, 247); */
     margin-top: 5px;
 }
 
