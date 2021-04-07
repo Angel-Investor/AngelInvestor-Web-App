@@ -31,25 +31,67 @@
                         <a class="nav-link" aria-current="page" href="/contact">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/Search">Search</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/login">Login/Register</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <br>
-    <div class="container">
-        <h1 class="welcomeMessageh1">Contact Us</h1>
-        <p class="welcomeMessageh1">Send us an email at : dkumar63@centennialcollege.ca</p>
+
+<main class="container">
+    <!-- Message Area -->
+    <% if(messages.length > 0) {%>
+        <div class="alert alert-danger">
+            <%= messages %>
+        </div>
+    <% } %>
+
+    <div class="row">
+        <div class="offset-md-4 col-md-4">
+            <h1 class="text-center">Please Register</h1>
+            <form method="POST" autocomplete="off">
+
+                <select class="form-select" aria-label="Default select example" id="type" name="type">
+                    <option selected>Select a Register Type</option>
+                    <option value="business">Register As a Business</option>
+                    <option value="investor">Register As a Investor</option>
+                </select>
+
+                <fieldset class="form-group">
+                    <label for="username">Username: </label>
+                    <input type="text" class="form-control"
+                    name="username" placeholder="Enter username"
+                    id="username" required autofocus>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" class="form-control"
+                    name="password" placeholder="Enter password"
+                    id="password" required>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" class="form-control"
+                    name="email" placeholder="Enter Email Address"
+                    id="email" required>
+                </fieldset>
+                <br>
+                <fieldset class="form-group text-right">
+                    <input type="submit" class="btn btn-dark" value="Register">
+                    <a href="/">
+                        <input type="button" class="btn btn-light" value="Cancel">
+                    </a>
+                </fieldset>
+
+            </form>
+        </div>
     </div>
-    <br>
-    <div class="center">
-        <img src="../../images/logo.png" alt="image">
-    </div>
-    <br>
+
+
+</main>
+
     <!-- Bottom Nav -->
     <footer>
         <nav class="navbar fixed-bottom navbar-dark bg-dark">

@@ -9,5 +9,4 @@ router.get('/', function(req, res, next) {
 router.get('/busregister', function(req, res, next) {
     res.render("businessRegister", { title: "Business Registraion" });
 });
-
 module.exports = router;
