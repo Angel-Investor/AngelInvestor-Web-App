@@ -4,9 +4,36 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// auth
+let session = require('express-session');
+let passport = require('passport');
+
+let passportJWT = require('passport-jwt');
+let JWTStrategy = passportJWT.Strategy;
+let ExtractJWT = passportJWT.ExtractJwt;
+
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
+let flash = require('connect-flash');
+
+// database setup
+let mongoose = require('mongoose');
+let DB = require('./config/db.js');
+
+// point mongoose to the DB URI
+mongoose.connect(DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
+mongoDB.once('open', ()=>{
+  console.log('Connected to MongoDB...');
+});
+
 var indexRouter = require('./routes/index');
 var investorRouter = require('./routes/investors');
 var businessesRouter = require('./routes/businesses');
+let businessRouter = require('./routes/business');
+let usersRouter = require('./routes/users');
 
 
 var app = express();
@@ -21,9 +48,36 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: "SomeSecret",
+  saveUninitialized: false,
+  resave: false
+}));
+
+app.use(flash());
+
+
 app.use('/', indexRouter);
 app.use('/investors', investorRouter);
+app.use('/users', usersRouter);
 app.use('/businesses', businessesRouter);
+app.use('/business-list',businessRouter)
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+let userModel = require('./models/user');
+let User = userModel.User;
+
+// implement a User Authentication Strategy
+passport.use(User.createStrategy());
+
+//passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 
 
 // catch 404 and forward to error handler
