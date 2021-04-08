@@ -3,6 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const Investor = require("./models/investor");
+const Business = require("./models/business");
+const InvestorUser = require("./models/investorUser");
+const BusinessUser = require("./models/businessUser");
+
 
 var indexRouter = require('./routes/index');
 var investorRouter = require('./routes/investors');

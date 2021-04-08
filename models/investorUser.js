@@ -12,12 +12,12 @@ const investorUserSchema = new Schema({
         trim: true,
         required: true,
     },
-    businessEmail: {
+    investorEmail: {
         type: String,
         trim: true,
         required: true
     },
-    businessDisplayName: {
+    investorDisplayName: {
         type: String,
         trim: true,
         required: true,

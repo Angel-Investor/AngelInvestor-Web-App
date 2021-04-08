@@ -10,4 +10,11 @@ router.get('/busregister', function(req, res, next) {
     res.render("businessRegister", { title: "Business Registraion" });
 });
 
+router.get("/add-investor", (req, res) => {
+
+
+
+})
+
+
 module.exports = router;
