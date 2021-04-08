@@ -21,12 +21,11 @@ mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongoDB.once('open', () => {
     console.log('Connected to MongoDB...');
 });
-
-var indexRouter = require('./routes/index');
-var investorRouter = require('./routes/investors');
-var businessesRouter = require('./routes/businesses');
-
 var app = express();
+
+const mainRouter = require("./routes/_main");
+app.use("/", mainRouter);
+
 
 
 // view engine setup
@@ -70,11 +69,6 @@ passport.deserializeUser(InvestorUser.deserializeUser());
 passport.use(BusinessUser.createStrategy());
 passport.serializeUser(BusinessUser.serializeUser());
 passport.deserializeUser(BusinessUser.deserializeUser());
-
-
-app.use('/', indexRouter);
-app.use('/investors', investorRouter);
-app.use('/businesses', businessesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
