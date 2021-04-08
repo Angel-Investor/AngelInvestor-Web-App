@@ -56,8 +56,13 @@ app.use(passport.session());
 
 const InvestorUser = require("./models/investorUser");
 const BusinessUser = require("./models/businessUser");
+const AdminUser = require("./models/adminUser");
 
 // passport setup
+passport.use(AdminUser.createStrategy());
+passport.serializeUser(AdminUser.serializeUser());
+passport.deserializeUser(AdminUser.deserializeUser());
+
 passport.use(InvestorUser.createStrategy());
 passport.serializeUser(InvestorUser.serializeUser());
 passport.deserializeUser(InvestorUser.deserializeUser());
