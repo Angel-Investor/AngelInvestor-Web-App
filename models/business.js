@@ -18,11 +18,6 @@ const businessSchema = new Schema({
         type: String,
         trim: true,
         required: true,
-    },
-    body: {
-        type: String,
-        trim: true,
-        required: true
     }
 }, { collection: "business" }, { timestamps: true });
 
