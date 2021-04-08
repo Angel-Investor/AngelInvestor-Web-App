@@ -18,10 +18,10 @@ const businessUser = new Schema({
         trim: true,
         required: true,
     },
-    body: {
+    businessDisplayName: {
         type: String,
         trim: true,
-        required: true
+        required: true,
     }
 }, { collection: "businessUser" }, { timestamps: true });
 

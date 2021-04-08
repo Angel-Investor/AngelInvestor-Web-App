@@ -18,6 +18,11 @@ const investorSchema = new Schema({
         type: String,
         trim: true,
         required: true,
+    },
+    body: {
+        type: String,
+        trim: true,
+        required: true
     }
 }, { collection: "investor" }, { timestamps: true });
 
