@@ -3,27 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const Investor = require("./models/investor");
-const Business = require("./models/business");
-const InvestorUser = require("./models/investorUser");
-const BusinessUser = require("./models/businessUser");
 
-
-var indexRouter = require('./routes/index');
-var investorRouter = require('./routes/investors');
-var businessesRouter = require('./routes/businesses');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// modules for authentication
+let session = require('express-session');
+let passport = require('passport');
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
+let flash = require('connect-flash');
 
 // database setup
 let mongoose = require('mongoose');
@@ -35,6 +21,51 @@ mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongoDB.once('open', () => {
     console.log('Connected to MongoDB...');
 });
+
+var indexRouter = require('./routes/index');
+var investorRouter = require('./routes/investors');
+var businessesRouter = require('./routes/businesses');
+
+var app = express();
+
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//setup express session
+app.use(session({
+    secret: "SomeSecret",
+    saveUninitialized: false,
+    resave: false
+}));
+
+// initialize flash
+app.use(flash());
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+const InvestorUser = require("./models/investorUser");
+const BusinessUser = require("./models/businessUser");
+
+// passport setup
+passport.use(InvestorUser.createStrategy());
+passport.serializeUser(InvestorUser.serializeUser());
+passport.deserializeUser(InvestorUser.deserializeUser());
+
+passport.use(BusinessUser.createStrategy());
+passport.serializeUser(BusinessUser.serializeUser());
+passport.deserializeUser(BusinessUser.deserializeUser());
+
 
 app.use('/', indexRouter);
 app.use('/investors', investorRouter);

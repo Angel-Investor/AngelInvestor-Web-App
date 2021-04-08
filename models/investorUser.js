@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const passportLocalMongoose = require("passport-local-mongoose");
 const Schema = mongoose.Schema;
 
-const investorUserSchema = new Schema({
-    businessUserName: {
+const investorUser = new Schema({
+    investorUserName: {
         type: String,
         trim: true,
         required: true,
@@ -23,6 +24,11 @@ const investorUserSchema = new Schema({
         required: true,
     }
 
-}, { timestamps: true });
+}, { collection: "investorUser" }, { timestamps: true });
 
-module.exports = mongoose.model('InvestorUser', investorUserSchema);
+investorUser.plugin(passportLocalMongoose, {
+    limitAttempts: true,
+    maxAttempts: 10,
+});
+
+module.exports = mongoose.model('InvestorUser', investorUser);

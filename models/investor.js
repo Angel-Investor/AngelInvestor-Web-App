@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
+const InvestorUser = require("./investorUser");
+
 const Schema = mongoose.Schema;
 
 const investorSchema = new Schema({
+
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: InvestorUser.modelName
+    },
     title: {
         type: String,
         trim: true,
@@ -17,6 +24,6 @@ const investorSchema = new Schema({
         trim: true,
         required: true
     },
-}, { timestamps: true });
+}, { collection: "investor" }, { timestamps: true });
 
 module.exports = mongoose.model('Investor', investorSchema);
