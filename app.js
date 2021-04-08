@@ -8,7 +8,6 @@ var indexRouter = require('./routes/index');
 var investorRouter = require('./routes/investors');
 var businessesRouter = require('./routes/businesses');
 
-
 var app = express();
 
 // view engine setup
@@ -21,10 +20,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// database setup
+let mongoose = require('mongoose');
+let DB = require('./config/db');
+
+mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true });
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
+mongoDB.once('open', () => {
+    console.log('Connected to MongoDB...');
+});
+
 app.use('/', indexRouter);
 app.use('/investors', investorRouter);
 app.use('/businesses', businessesRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
