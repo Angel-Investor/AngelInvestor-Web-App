@@ -6,15 +6,24 @@ router.get('/', function(req, res, next) {
     res.render("businesses", { title: "Business Listing" });
 });
 
-router.get('/busregister', function(req, res, next) {
+router.get('/add-business', function(req, res, next) {
     res.render("businessRegister", { title: "Business Registraion" });
 });
 
-router.get("/add-investor", (req, res) => {
+router.post("/add-business", (req, res, next) => {
 
+});
 
+router.get("/edit-business/:id", (req, res, next) => {
 
-})
+});
 
+router.post("/edit-business/:id", (req, res, next) => {
+
+});
+
+router.get("/delete-business/:id", (req, res, next) => {
+
+});
 
 module.exports = router;
