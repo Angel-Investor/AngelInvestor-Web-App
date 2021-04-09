@@ -13,10 +13,44 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/add-investor-user', function(req, res, next) {
-    res.render("investorRegister", { title: "Investors Registration" });
+    if (req.user)
+        return res.redirect("/");
+
+    res.render("investorRegister", {
+        title: "Investor Registeration",
+        messages: req.flash("registerMessage"),
+    });
 });
 
 router.post("/add-investor-user", (req, res, next) => {
+
+    let newInvestorUser = new InvestorUser({
+        investorUserName: req.body.investorUserName,
+        investorEmail: req.body.investorEmail,
+        investorDisplayName: investorDisplayName
+
+    });
+
+    InvestorUser.register(newInvestorUser, req.body.password, err => {
+        if (err) {
+            if (err.name === "UserExistError") {
+                req.flash("registerMessage", "Registration error : User already exists.")
+            }
+
+            res.render("InvestorRegister", {
+                title: "Investor Registeration",
+                messages: req.flash("registerMessage"),
+            });
+
+        }
+
+        passport.authenticate("local")(req, res, () => {
+
+            res.redirect("/investorList");
+        });
+
+
+    })
 
 });
 

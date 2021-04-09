@@ -28,7 +28,30 @@ router.post("/add-business-user", (req, res, next) => {
         //password: req.body.password,
         businessEmail: req.body.businessEmail,
         businessDisplayName: req.body.businessDisplayName
-    })
+    });
+
+    BusinessUser.register(newBusinessUser, req.body.password, err => {
+
+        if (err) {
+            if (err.name === "UserExistError") {
+                req.flash("registerMessage", "Registration error : User already exists.");
+            }
+
+            res.render("businessRegister", {
+                title: "Business Registeration",
+                messages: req.flash("registerMessage"),
+            });
+
+        }
+
+        passport.authenticate("local")(req, res, () => {
+
+            res.redirect("/businessList");
+        });
+
+
+    });
+
 
 
 });
