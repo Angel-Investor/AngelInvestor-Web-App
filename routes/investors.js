@@ -1,6 +1,10 @@
 let express = require('express');
 let router = express.Router();
 let passport = require('passport');
+let InvestorUser = require("../models/investorUser");
+let InvestorPost = require("../models/investor");
+
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

@@ -8,12 +8,12 @@ const businessUser = new Schema({
         trim: true,
         required: true,
     },
-    password: {
-        type: String,
-        trim: true,
-        required: true,
-    },
-    email: {
+    // password: {
+    //     type: String,
+    //     trim: true,
+    //     required: true,
+    // },
+    businessEmail: {
         type: String,
         trim: true,
         required: true,

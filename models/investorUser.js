@@ -8,11 +8,11 @@ const investorUser = new Schema({
         trim: true,
         required: true,
     },
-    password: {
-        type: String,
-        trim: true,
-        required: true,
-    },
+    // password: {
+    //     type: String,
+    //     trim: true,
+    //     required: true,
+    // },
     investorEmail: {
         type: String,
         trim: true,
