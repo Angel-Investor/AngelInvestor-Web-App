@@ -15,6 +15,10 @@ router.get('/contact', function(req, res, next) {
 router.get('/adminDash', function(req, res, next){
     res.render('adminDash', { title: 'Admin Dashboard'});
 });
+//Investor Dashboard
+router.get('/investorDash', function(req, res, next){
+    res.render('investorDash', { title: 'Inventor Dashboard'});
+});
 
 router.get("/login", (req, res, next) => {
 
