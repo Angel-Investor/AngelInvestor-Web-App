@@ -20,6 +20,10 @@ router.get('/adminDash', function(req, res, next) {
 router.get('/investorDash', function(req, res, next){
     res.render('investorDash', { title: 'Inventor Dashboard'});
 });
+//Investor Dashboard
+router.get('/businessDash', function(req, res, next){
+    res.render('businessDash', { title: 'Business Dashboard'});
+});
 
 //Login get request
 router.get("/", (req, res, next) => {
